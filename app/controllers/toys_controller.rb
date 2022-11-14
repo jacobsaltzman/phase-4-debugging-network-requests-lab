@@ -7,13 +7,14 @@ class ToysController < ApplicationController
   end
 
   def create
-    toy = Toys.create(toy_params)
+    toy = Toy.create(toy_params) #plural changed to singular
     render json: toy, status: :created
   end
 
   def update
     toy = Toy.find_by(id: params[:id])
     toy.update(toy_params)
+    render json: toy #this line was missing
   end
 
   def destroy
